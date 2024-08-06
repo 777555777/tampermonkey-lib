@@ -19,8 +19,8 @@
     "noUncheckedIndexedAccess": true,
 
     /* If transpiling with TypeScript: */
-    "moduleResolution": "NodeNext",
-    "module": "NodeNext",
+    "moduleResolution": "Node",
+    "module": "CommonJS",
 
     /* If your code runs in the DOM: */
     "lib": ["DOM", "ES2023"]

@@ -1,11 +1,13 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * Wählt sicher ein DOM-Element aus und gibt ein Konsolen error aus falls das Selektieren fehlschlägt.
  * @param selector - Der Selektor des Elements.
  * @param sourceElement - Das Element, in dem gesucht werden soll.
  * @returns Das ausgewählte Element oder undefined, wenn das Element nicht gefunden wurde.
  */
-export function querySelectorSafe(selector, sourceElement = document) {
-    let element = sourceElement.querySelector(selector);
+function querySelectorSafe(selector, sourceElement = document) {
+    const element = sourceElement.querySelector(selector);
     if (element) {
         return element;
     }
@@ -20,7 +22,11 @@ export function querySelectorSafe(selector, sourceElement = document) {
  * @param maxRandom - Die obere Grenze für die zusätzliche zufällige Verzögerung.
  * @returns Eine Promise, die nach der angegebenen Anzahl von Millisekunden plus der zufälligen Verzögerung erfüllt wird.
  */
-export function sleep(milliseconds, maxRandom = 0) {
+function sleep(milliseconds, maxRandom = 0) {
     const randomDelay = Math.floor(Math.random() * maxRandom);
     return new Promise((resolve) => setTimeout(resolve, milliseconds + randomDelay));
 }
+// @ts-ignore
+globalThis.querySelectorSafe = querySelectorSafe;
+// @ts-ignore
+globalThis.sleep = sleep;

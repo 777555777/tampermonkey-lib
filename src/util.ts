@@ -4,8 +4,8 @@
  * @param sourceElement - Das Element, in dem gesucht werden soll.
  * @returns Das ausgewählte Element oder undefined, wenn das Element nicht gefunden wurde.
  */
-export function querySelectorSafe(selector: string, sourceElement: Document | Element = document): Element | undefined {
-  let element = sourceElement.querySelector(selector)
+function querySelectorSafe(selector: string, sourceElement: Document | Element = document): Element | undefined {
+  const element = sourceElement.querySelector(selector)
   if (element) {
     return element
   } else {
@@ -20,7 +20,12 @@ export function querySelectorSafe(selector: string, sourceElement: Document | El
  * @param maxRandom - Die obere Grenze für die zusätzliche zufällige Verzögerung.
  * @returns Eine Promise, die nach der angegebenen Anzahl von Millisekunden plus der zufälligen Verzögerung erfüllt wird.
  */
-export function sleep(milliseconds: number, maxRandom: number = 0): Promise<void> {
+function sleep(milliseconds: number, maxRandom: number = 0): Promise<void> {
   const randomDelay = Math.floor(Math.random() * maxRandom)
   return new Promise((resolve) => setTimeout(resolve, milliseconds + randomDelay))
 }
+
+// @ts-ignore
+globalThis.querySelectorSafe = querySelectorSafe
+// @ts-ignore
+globalThis.sleep = sleep
