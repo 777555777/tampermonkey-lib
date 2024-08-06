@@ -25,5 +25,5 @@ function sleep(milliseconds, maxRandom = 0) {
   return new Promise((resolve) => setTimeout(resolve, milliseconds + randomDelay))
 }
 
-window.querySelectorSafe = querySelectorSafe
-window.sleep = sleep
+window.querySelectorSafe = querySelectorSafe()
+window.sleep = sleep()
