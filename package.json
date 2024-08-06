@@ -4,7 +4,7 @@
   "description": "template for creating new projects",
   "license": "ISC",
   "author": "-",
-  "exports": "./src/main.js",
+  "main": "./src/main.js",
   "scripts": {
     "build": "tsc --project tsconfig.json"
   },
