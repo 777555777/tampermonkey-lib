@@ -13,7 +13,7 @@
  * @param {HTMLElement} [sourceElement=document] - Das Element, in dem gesucht werden soll.
  * @returns {HTMLElement | undefined} Das ausgewählte Element oder undefined, wenn das Element nicht gefunden wurde.
  */
-function querySelectorSafe(selector, sourceElement = document) {
+const querySelectorSafe = function (selector, sourceElement = document) {
   const element = sourceElement.querySelector(selector)
   if (element) {
     return element
@@ -29,7 +29,7 @@ function querySelectorSafe(selector, sourceElement = document) {
  * @param {number} [maxRandom=0] - Die obere Grenze für die zusätzliche zufällige Verzögerung.
  * @returns {Promise<void>} Eine Promise, die nach der angegebenen Anzahl von Millisekunden plus der zufälligen Verzögerung erfüllt wird.
  */
-function sleep(milliseconds, maxRandom = 0) {
+const sleep = function (milliseconds, maxRandom = 0) {
   const randomDelay = Math.floor(Math.random() * maxRandom)
   return new Promise((resolve) => setTimeout(resolve, milliseconds + randomDelay))
 }
