@@ -12,7 +12,7 @@
  * @param {string} btnText - Der Text, der auf dem Button angezeigt wird.
  * @param {Function} onClickFunction - Die Funktion, die beim Klicken auf den Button ausgeführt wird.
  */
-const createSimpleButton = function (btnText, onClickFunction) {
+function createSimpleButton(btnText, onClickFunction) {
   const btnStyles = `
     button#simpleBtn {
         border: none;
