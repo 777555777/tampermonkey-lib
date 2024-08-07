@@ -54,3 +54,5 @@ function createSimpleButton(btnText, onClickFunction) {
     }
   })
 }
+
+unsafeWindow.createSimpleButton = createSimpleButton

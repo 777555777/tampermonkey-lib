@@ -34,6 +34,5 @@ function sleep(milliseconds, maxRandom = 0) {
   return new Promise((resolve) => setTimeout(resolve, milliseconds + randomDelay))
 }
 
-// Funktionen zu unsafeWindow hinzufügen
 unsafeWindow.querySelectorSafe = querySelectorSafe
 unsafeWindow.sleep = sleep
