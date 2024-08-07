@@ -1,10 +1,12 @@
+// @grant unsafeWindow
+
 /**
  * Wählt sicher ein DOM-Element aus und gibt ein Konsolen error aus falls das Selektieren fehlschlägt.
  * @param selector - Der Selektor des Elements.
  * @param sourceElement - Das Element, in dem gesucht werden soll.
  * @returns Das ausgewählte Element oder undefined, wenn das Element nicht gefunden wurde.
  */
-function querySelectorSafe(selector, sourceElement = document) {
+unsafeWindow.querySelectorSafe = function querySelectorSafe(selector, sourceElement = document) {
   const element = sourceElement.querySelector(selector)
   if (element) {
     return element
@@ -20,10 +22,7 @@ function querySelectorSafe(selector, sourceElement = document) {
  * @param maxRandom - Die obere Grenze für die zusätzliche zufällige Verzögerung.
  * @returns Eine Promise, die nach der angegebenen Anzahl von Millisekunden plus der zufälligen Verzögerung erfüllt wird.
  */
-function sleep(milliseconds, maxRandom = 0) {
+unsafeWindow.sleep = function sleep(milliseconds, maxRandom = 0) {
   const randomDelay = Math.floor(Math.random() * maxRandom)
   return new Promise((resolve) => setTimeout(resolve, milliseconds + randomDelay))
 }
-
-window.querySelectorSafe = querySelectorSafe
-window.sleep = sleep
