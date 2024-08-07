@@ -1,4 +1,11 @@
-// @grant unsafeWindow
+// ==UserScript==
+// @name         Library Script
+// @namespace    http://tampermonkey.net/
+// @version      1.0
+// @description  Provides utility functions
+// @grant        unsafeWindow
+// @match        *://*/*
+// ==/UserScript==
 
 /**
  * Wählt sicher ein DOM-Element aus und gibt ein Konsolen error aus falls das Selektieren fehlschlägt.
@@ -6,13 +13,13 @@
  * @param sourceElement - Das Element, in dem gesucht werden soll.
  * @returns Das ausgewählte Element oder undefined, wenn das Element nicht gefunden wurde.
  */
-unsafeWindow.querySelectorSafe = function querySelectorSafe(selector, sourceElement = document) {
-  const element = sourceElement.querySelector(selector)
+function querySelectorSafe(selector, sourceElement = document) {
+  const element = sourceElement.querySelector(selector);
   if (element) {
-    return element
+    return element;
   } else {
-    console.error(`Selector: ${selector} was not able to find a value!`)
-    return undefined
+    console.error(`Selector: ${selector} was not able to find a value!`);
+    return undefined;
   }
 }
 
@@ -22,7 +29,11 @@ unsafeWindow.querySelectorSafe = function querySelectorSafe(selector, sourceElem
  * @param maxRandom - Die obere Grenze für die zusätzliche zufällige Verzögerung.
  * @returns Eine Promise, die nach der angegebenen Anzahl von Millisekunden plus der zufälligen Verzögerung erfüllt wird.
  */
-unsafeWindow.sleep = function sleep(milliseconds, maxRandom = 0) {
-  const randomDelay = Math.floor(Math.random() * maxRandom)
-  return new Promise((resolve) => setTimeout(resolve, milliseconds + randomDelay))
+function sleep(milliseconds, maxRandom = 0) {
+  const randomDelay = Math.floor(Math.random() * maxRandom);
+  return new Promise((resolve) => setTimeout(resolve, milliseconds + randomDelay));
 }
+
+// Funktionen zu unsafeWindow hinzufügen
+unsafeWindow.querySelectorSafe = querySelectorSafe;
+unsafeWindow.sleep = sleep;
