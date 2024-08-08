@@ -34,5 +34,48 @@ function sleep(milliseconds, maxRandom = 0) {
   return new Promise((resolve) => setTimeout(resolve, milliseconds + randomDelay))
 }
 
+/**
+ * Lädt eine Datei von einer gegebenen URL herunter und zeigt dabei einen Lade-Indikator an.
+ * @param {string} fileUrl - Die URL der Datei, die heruntergeladen werden soll.
+ * @param {string} fileName - Der Name, unter dem die Datei gespeichert werden soll.
+ */
+async function downloadFileWithProgress(fileUrl, fileName) {
+  const loadingIndicator = createLoadingIndicator()
+
+  try {
+    const response = await fetch(fileUrl)
+    const reader = response.body.getReader()
+    const contentLength = +response.headers.get("Content-Length")
+    let receivedLength = 0
+    const chunks = []
+
+    while (true) {
+      const { done, value } = await reader.read()
+      if (done) break
+      chunks.push(value)
+      receivedLength += value.length
+
+      // Fortschrittsanzeige aktualisieren
+      updateLoadingIndicator(loadingIndicator, receivedLength, contentLength)
+    }
+
+    const blob = new Blob(chunks)
+    const a = document.createElement("a")
+    const objectUrl = URL.createObjectURL(blob)
+    a.href = objectUrl
+    a.download = fileName
+    document.body.appendChild(a)
+    a.style.display = "none"
+    a.click()
+    URL.revokeObjectURL(objectUrl)
+    document.body.removeChild(a)
+  } catch (err) {
+    console.error("Error downloading the file: ", err)
+  } finally {
+    removeLoadingIndicator(loadingIndicator)
+  }
+}
+
 unsafeWindow.querySelectorSafe = querySelectorSafe
 unsafeWindow.sleep = sleep
+unsafeWindow.downloadFileWithProgress = downloadFileWithProgress
