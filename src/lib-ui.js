@@ -73,7 +73,7 @@ function createLoadingIndicator() {
         left: 50%;
         transform: translate(-50%, -50%);
         z-index: 99999;
-        background: rgba(255, 255, 255, 0.25);
+        background: rgba(100, 100, 100, 0.25);
         border-radius: 16px;
         box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
         backdrop-filter: blur(6px);
@@ -104,7 +104,7 @@ function createLoadingIndicator() {
             animation: spin 2s linear infinite;
         "
         ></div>
-        <p style="margin-top: 1rem; color: hsl(26, 92%, 48%)">Download läuft...</p>
+        <p style="margin-top: 1rem; text-align: center; color: hsl(26, 92%, 48%)">Download läuft...</p>
     </div>
     </div>
 `
