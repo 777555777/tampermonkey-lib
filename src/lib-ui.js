@@ -48,7 +48,7 @@ function createSimpleButton(btnText, onClickFunction) {
 
   runBtn.addEventListener("click", function () {
     try {
-      onClickFunction(currentLocation)
+      onClickFunction()
     } catch (error) {
       throw new Error("onClick run script failed:", error)
     }
