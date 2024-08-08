@@ -1,12 +1,3 @@
-// ==UserScript==
-// @name         lib-ui.js
-// @namespace    https://github.com/777555777/tampermonkey-lib
-// @version      0.1.0
-// @description  Provides ui elements
-// @grant        unsafeWindow
-// @match        *://*/*
-// ==/UserScript==
-
 /**
  * Erstellt einen einfachen Button und fügt ihn der Seite hinzu.
  * @param {string} btnText - Der Text, der auf dem Button angezeigt wird.
