@@ -13,7 +13,7 @@
  * @param {HTMLElement} [sourceElement=document] - Das Element, in dem gesucht werden soll.
  * @returns {HTMLElement | undefined} Das ausgewählte Element oder undefined, wenn das Element nicht gefunden wurde.
  */
-function querySelectorSafe(selector, sourceElement = document) {
+unsafeWindow.querySelectorSafe = function querySelectorSafe(selector, sourceElement = document) {
   const element = sourceElement.querySelector(selector)
   if (element) {
     return element
@@ -23,27 +23,23 @@ function querySelectorSafe(selector, sourceElement = document) {
   }
 }
 
-unsafeWindow.querySelectorSafe = querySelectorSafe
-
 /**
  * Erzeugt eine Promise, die nach einer bestimmten Anzahl von Millisekunden plus einer zufälligen Verzögerung erfüllt wird.
  * @param {number} milliseconds - Die Anzahl der Millisekunden, die mindestens gewartet werden soll.
  * @param {number} [maxRandom=0] - Die obere Grenze für die zusätzliche zufällige Verzögerung.
  * @returns {Promise<void>} Eine Promise, die nach der angegebenen Anzahl von Millisekunden plus der zufälligen Verzögerung erfüllt wird.
  */
-function sleep(milliseconds, maxRandom = 0) {
+unsafeWindow.sleep = function sleep(milliseconds, maxRandom = 0) {
   const randomDelay = Math.floor(Math.random() * maxRandom)
   return new Promise((resolve) => setTimeout(resolve, milliseconds + randomDelay))
 }
-
-unsafeWindow.sleep = sleep
 
 /**
  * Erstellt einen einfachen Button und fügt ihn der Seite hinzu.
  * @param {string} btnText - Der Text, der auf dem Button angezeigt wird.
  * @param {Function} onClickFunction - Die Funktion, die beim Klicken auf den Button ausgeführt wird.
  */
-function createSimpleButton(btnText, onClickFunction) {
+unsafeWindow.createSimpleButton = function createSimpleButton(btnText, onClickFunction) {
   const btnStyles = `
     button#simpleBtn {
         border: none;
@@ -85,5 +81,3 @@ function createSimpleButton(btnText, onClickFunction) {
     }
   })
 }
-
-unsafeWindow.createSimpleButton = createSimpleButton
